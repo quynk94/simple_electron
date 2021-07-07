@@ -10,10 +10,10 @@ function createWindow () {
     }
   })
 
-  win.webContents.userAgent = win.webContents.userAgent.replace(/Electron\/(\d)+\.(\d)+\.(\d)+ /, '');
-  console.log('user agent: ', win.webContents.userAgent);
+  // win.webContents.userAgent = win.webContents.userAgent.replace(/Electron\/(\d)+\.(\d)+\.(\d)+ /, '');
+  // console.log('user agent: ', win.webContents.userAgent);
 
-  win.loadURL("https://www-canary.koov.io/app/welcome?locale=en")
+  win.loadURL('http://localhost:6006/?path=/story/app--default')
 
   // Open the DevTools.
   win.webContents.openDevTools()
@@ -22,7 +22,7 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow)
+// app.whenReady().then(createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -47,3 +47,7 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+app.on('ready', function () {
+  createWindow()
+});
